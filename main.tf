@@ -16,7 +16,7 @@ terraform {
 
   backend "s3" { 
     bucket = "sctp-ce11-tfstate" 
-    key    = "marlon32.tfstate"  #Change this 
+    key    = "marlon3-2.tfstate"  #Change this 
     region = "us-east-1" 
   } 
 } 
@@ -24,7 +24,7 @@ terraform {
 data "aws_caller_identity" "current" {} 
  
 locals { 
-  name_prefix = "${split("/", "data.aws_caller_identity.current.arn)[1]}"  # "${split("/", "${data.aws_caller_identity.current.arn}")[1]}" 
+  name_prefix = split("/", data.aws_caller_identity.current.arn)[1]  # "${split("/", "${data.aws_caller_identity.current.arn}")[1]}" 
   account_id  = data.aws_caller_identity.current.account_id 
 } 
  
