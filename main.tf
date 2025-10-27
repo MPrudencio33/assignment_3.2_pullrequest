@@ -1,12 +1,23 @@
 provider "aws" { 
-  region = "ap-southeast-1" 
+  region = "us-east-1" 
 } 
  
 terraform { 
+  # Specify the required Terraform version
+  required_version = ">= 1.0.0"
+
+  # Specify provider and version
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+
   backend "s3" { 
-    bucket = "sctp-ce8-tfstate" 
-    key    = "jaz-s3-tf-ci.tfstate"  #Change this 
-    region = "ap-southeast-1" 
+    bucket = "sctp-ce11-tfstate" 
+    key    = "marlon32.tfstate"  #Change this 
+    region = "us-east-1" 
   } 
 } 
  
